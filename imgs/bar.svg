@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--SVG 学习 参考：http://www.ruanyifeng.com/blog/2018/08/svg.html-->
+
+<!--viewBox 视图范围与视图大小的关系-->
+<svg width="200px" height="200px" viewBox="0 0 200 200" version="1.1" xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!--圆-->
+    <circle id="myCircle" cx="100px" cy="100px" r="99px" stroke-width="1px" stroke="#FF0000" fill="#FFFFFF"
+            opacity="0.5"/>
+    <!--线-->
+    <line x1="50" y1="100" x2="150px" y2="100px" stroke="#00FF00" stroke-width="1"/>
+    <!--折线 opacity 代表整体透明度(包括线和填充的透明度) stroke-opacity (线的透明度) fill-opacity填充的透明度-->
+    <polyline points="0,0 50,50 100,0 150,50 200,0" stroke-width="1px" fill-opacity="0" stroke="#0000FF"/>
+    <!--方形 x y 左上角坐标 height width 指定矩形的长宽-->
+    <rect x="50" y="75" height="50" width="100" fill-opacity="0" stroke="#123456"/>
+    <!--椭圆-->
+    <ellipse cx="100" cy="100" rx="100" ry="25" fill-opacity="0" stroke-width="1" stroke="#333333"/>
+    <!--多边形-->
+    <polygon points="0,0 50,50 50,150 0,100" fill-opacity="0.3" stroke="#666666"/>
+    <!--绘制路径 并且封闭形成图形 可以绘制多条路径 在一个Path中-->
+    <!--M:move L:line Z:封闭当前路径-->
+    <path d="M0,0 L30,50 L60,30 L90,50 L120,0 Z M0,100 L30,150 L60,130 L90,150 L120,100 Z" stroke="#FF8888"
+          stroke-width="2" opacity="0.4"/>
+    <!--x y 代表字体的初始绘制方位-->
+    <text id="myText" x="100" y="50" font-family="MicrosoftYaHeiUI-Bold, Microsoft YaHei UI" font-size="16">Bar 中文
+    </text>
+    <!--use 标签复制指定图形 WebStorm预览无效果 Chrome可以查看效果-->
+    <!--x y 为相对于应用的图像的原始坐标的偏移值-->
+    <!--    <use id="use" href="#secGroup" x="-100" y="0"/>-->
+
+    <!--组合图形 方便复用 然而use 标签并无法使用-->
+    <g id="firstGroup">
+        <circle cx="100" cy="100" r="20" stroke-width="2" stroke="#FF00FF" fill="#00FFFF" opacity="0.3"/>
+        <rect x="90" y="90" height="20" width="20" stroke="yellow" fill="blue" opacity="0.4"/>
+    </g>
+    <!--定义图形但是不进行绘制 只提供定义给图形进行引用-->
+    <defs>
+        <g id="secGroup">
+            <circle cx="150" cy="100" r="20" stroke-width="2" stroke="#FF00FF" fill="#00FFFF" opacity="0.3"/>
+            <rect x="140" y="90" height="20" width="20" stroke="yellow" fill="blue" opacity="0.4"/>
+        </g>
+    </defs>
+    <!--定义一个模式填充指定区域-->
+    <pattern id="dots" x="0" y="0" width="100" height="100" patternContentUnits="userSpaceOnUse">
+        <circle fill="#bee9e8" cx="50" cy="50" r="35"/>
+    </pattern>
+    <!--<rect x="0" y="0" width="100%" height="100%" fill="url(#dots)"/>-->
+    <!--引用普通的 png 或者 svg 图片 只需要提供绝对路径或者相对路径即可-->
+    <!--<image width="50%" height="50%" xlink:href="./warning.svg"/>-->
+    <!--animate属性用于动画的播放 webStorm预览没有动画效果 chrome浏览器打开有预览效果-->
+    <!--animateTransform 暂时理解为宁外一种动画方式 可以进行变形操作-->
+    <rect x="0" y="75" height="50" width="100" fill-opacity="1" stroke="#123456">
+        <!--<animate attributeName="x" from="0" to="200" dur="1s" repeatCount="indefinite"/>-->
+        <animateTransform attributeName="transform" type="rotate" begin="0s" dur="10s" from="0 50 50" to="360 100 100"
+                          repeatCount="indefinite"/>
+    </rect>
+
+
+</svg>
